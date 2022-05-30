@@ -15,4 +15,19 @@ You must have downloaded python and pip pakage manager to install pytest. You ca
 ```bash
   pytest --version
 ```
-    
+# How to run Program
+1. You can run the single test program by following command (here my program name is first_test.py) :
+```bash
+  pytest first_test.py
+```
+2. For multiple test case program you can run using testname bye sub-string maching or using test marker.
+    i. For sub-string matching following command is used(for example method1 is my test method) :
+    ```bash
+    py.test -k method1 -v
+    ```
+    here -k used for substring mathc and 
+    -v icreases the posiiblilities.
+    ii. Using marker program can be run by command (you have to declare the marker before the test function eg."@pytest.mark.first") :
+    ```bash
+    py.test -m one
+    ```
