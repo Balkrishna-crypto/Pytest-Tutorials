@@ -36,7 +36,7 @@ You must have downloaded python and pip pakage manager to install pytest. You ca
 To use the module requests in api test by pytest, you need to install request else it will so error "ModuleNotFoundError: No module named 'requests'" . To install request you should have install pip. Then hit following command:
   ```bash
     pip install requests
-    ```
+  ```
     Or you can read this stackoverflow solution
     https://stackoverflow.com/questions/17309288/importerror-no-module-named-requests
 
