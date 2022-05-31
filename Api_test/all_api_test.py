@@ -46,7 +46,7 @@ def test_getSingle_userNotFound():
     response = requests.get(url)
     assert response.status_code==404 
 
-
+@pytest.mark.skip
 def test_list_resource():
     url= "https://reqres.in/api/unknown"
     response = requests.get(url)
@@ -72,3 +72,19 @@ def test_put_update():
     assert response.status_code==200
     with open("put_update.txt","w") as f:
         f.write(str(body))
+
+@pytest.mark.PatchUpdate
+def test_patch_update():
+    url= "https://reqres.in/api/users/2"
+    data = {"name": "peter","job": "QA Enginer"}
+    response = requests.patch(url,data=data)
+    body=json.loads(response.text)
+    assert response.status_code==200
+    with open("patch_update.txt","w") as f:
+        f.write(str(body))
+
+def test_delete_user():
+    url= "https://reqres.in/api/2"
+    response = requests.delete(url)
+    assert response.status_code==204
+   
