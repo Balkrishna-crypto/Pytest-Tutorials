@@ -20,7 +20,7 @@ You must have downloaded python and pip pakage manager to install pytest. You ca
 ```bash
   pytest first_test.py
 ```
-2. For multiple test case program you can run using testname bye sub-string maching or using test marker.
+2. For multiple test case program you can run using testname bye sub-string maching or group test by marker.
     i. For sub-string matching following command is used(for example method1 is my test method) :
     ```bash
     py.test -k method1 -v
@@ -31,3 +31,12 @@ You must have downloaded python and pip pakage manager to install pytest. You ca
     ```bash
     py.test -m one
     ```
+
+# Install requests
+To use the module requests in api test by pytest, you need to install request else it will so error "ModuleNotFoundError: No module named 'requests'" . To install request you should have install pip. Then hit following command:
+  ```bash
+    pip install requests
+    ```
+    Or you can read this stackoverflow solution
+    https://stackoverflow.com/questions/17309288/importerror-no-module-named-requests
+
