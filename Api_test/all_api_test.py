@@ -46,7 +46,7 @@ def test_getSingle_userNotFound():
     response = requests.get(url)
     assert response.status_code==404 
 
-@pytest.mark.skip
+
 def test_list_resource():
     url= "https://reqres.in/api/unknown"
     response = requests.get(url)
@@ -87,4 +87,18 @@ def test_delete_user():
     url= "https://reqres.in/api/2"
     response = requests.delete(url)
     assert response.status_code==204
-   
+
+def test_register_user():
+    url= "https://reqres.in/api/register"
+    data = {"email": "eve.holt@reqres.in","password": "pistol"}
+    response = requests.post(url,data=data)
+    token = json.loads(response.text)
+    assert response.status_code==200
+    assert token['token']=="QpwL5tke4Pnpja7X4"
+
+def test_register_unsuccessful():
+    url= "https://reqres.in/api/register"
+    data = {"email": "eve.holt@reqres.in"}
+    response = requests.post(url,data=data)
+    assert response.status_code==400
+    
