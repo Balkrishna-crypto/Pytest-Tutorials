@@ -101,4 +101,12 @@ def test_register_unsuccessful():
     data = {"email": "eve.holt@reqres.in"}
     response = requests.post(url,data=data)
     assert response.status_code==400
-    
+
+@pytest.mark.deleyed   
+def test_deleyed_response():
+    url= "https://reqres.in/api/users?delay=3"
+    response = requests.get(url)
+    body=json.loads(response.text)
+    assert response.status_code==200
+    with open("test_deleyed.txt","w") as f:
+        f.write(str(body))
