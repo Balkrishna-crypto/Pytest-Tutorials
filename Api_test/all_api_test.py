@@ -1,3 +1,4 @@
+from email.quoprimime import body_check
 from urllib import response
 import pytest 
 import requests
@@ -23,14 +24,20 @@ def test_invalid_login():
 
 def test_list_users():
     url= "https://reqres.in/api/users?page=2"
-    # data = {"email": "eve.holt@reqres.in","password": "cityslicka"}
     response = requests.get(url)
-    token = json.loads(response.text)
+    body = json.loads(response.text)
     assert response.status_code==200
-    print(response)
     # "a" - Append - will append to the end of the file
     # "w" - Write - will overwrite any existing content
     # f = open("list_User.txt", "a")
-    # f.write(response)
+    # f.write(str(body))
     # f.close()
+    with open("list_User.txt", "w") as f:
+        f.write(str(body))
+    
+
+def test_getSingle_user():
+    url= "https://reqres.in/api/users/2"
+    response = requests.post(url)
+    assert response.status_code==200 or 201   
     
